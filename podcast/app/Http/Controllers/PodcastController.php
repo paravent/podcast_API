@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 use DB;
 use App\Http\Controllers\Controller;
 use App\Models\update;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class PodcastController extends Controller
 {
     /**
      * Show the profile for a given user.
@@ -19,7 +20,9 @@ class UserController extends Controller
         $id = DB::select('SELECT * FROM updates');
 
         return view('pages.all', ['id'=>$id]);
+        
     }
+
 
     
 }

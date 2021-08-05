@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PodcastController;
 
 use App\Models\Post; 
 use App\Models\update; 
@@ -22,37 +22,59 @@ Route::get('testing', function (){
     return ['message' => 'hello']; 
 
 }); 
-/*
-Route::get('/posts', function (){
-   $post =  Post::create([
-       'id' => '1', 
-       'url' => 'anne.jpg',
-       'title' => 'walkingwithugly',
-       'description' => 'aPodcast',
-       'episode_number' => '1',
-       'date_created' => '21072001'
-    ]);
-    return $post; 
+
+
+Route::get('/podcast/{updates}', [PodcastController::class, 'show']);
+
+
+Route::get('/podcast123', [PodcastController::class, 'takeJSON']);
+
+Route::get('/podcast', function () {
+    // Read File
+
+    $jsonString = file_get_contents(base_path('input.json'));
+
+    $data = json_decode($jsonString, true);
+    
+    return $data; 
 });
-*/
 
-Route::get('/podcast/{updates}', [UserController::class, 'show']);
+Route::get('create', function (Request $request) {
+    
+    $input = $request->all(); 
 
+    /*
+    if($request->has(['url', 'title', 'description', 'episode_number', 'created_date'])){
+        $answer = "welcome";
+        return  $answer; 
+    }
+    return false; 
+    
+    */
 
-
-
-Route::get('updates', function (){
-    $updates =  update::create([
+    if($request->has(['url'])){
         
-        'url' => 'atestingurl.jpg',
-        'title' => 'mymostepicmovie',
-        'description' => 'a movie about me :)',
-        'episode_number' => '69',
-        'created_date' => '2021-08-01 21:23:23'
-     ]);
-     return $updates; 
+        return  $request->url; 
+    }
+    return false;
+
+    $jsonString = file_get_contents(base_path('input.json'));
+
+
+    foreach(json_decode($jsonString, true) as $new_podcast){
+
+        $updates =  update::create([
+            'url' => $new_podcast['url'],
+            'title' => $new_podcast['title'],
+            'description' => $new_podcast['description'],
+            'episode_number' => $new_podcast['episode_number'],
+            'created_date' => $new_podcast['created_date']
+         ]);
+    }
  });
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
