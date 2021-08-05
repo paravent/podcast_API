@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PodcastController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('/podcasts', [UserController::class, 'show']);
+Route::get('/podcasts', [PodcastController::class, 'show']);
 

@@ -23,6 +23,10 @@ class PodcastController extends Controller
         
     }
 
+    public function index(){
+        return response(['created'=>true],201); 
+    }
+
 
     
 }

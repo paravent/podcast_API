@@ -14,8 +14,6 @@ class update extends Model
         'description',
         'episode_number',
         'created_date'
-
-        
     ];
     use HasFactory;
 }
