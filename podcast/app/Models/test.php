@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class update extends Model
+class test extends Model
 {
 
     protected $fillable = [
-        'id',
-        'url'
+        'id', 
+        'url',
+        'title',
+        'description',
+        'episode_number',
+        'date_created'
+    ]; 
 
-        
-    ];
     use HasFactory;
 }

@@ -22,7 +22,7 @@ Route::get('testing', function (){
     return ['message' => 'hello']; 
 
 }); 
-
+/*
 Route::get('/posts', function (){
    $post =  Post::create([
        'id' => '1', 
@@ -34,14 +34,11 @@ Route::get('/posts', function (){
     ]);
     return $post; 
 });
-
-Route::get('/updates', function (){
-    $updates =  Post::create([
-        'url' => 'anne.jpg',
-        'title' => 'walkingwithugly',
-        'description' => 'aPodcast',
-        'episode_number' => '1',
-        'date_created' => '21072001'
+*/
+Route::get('updates', function (){
+    $updates =  update::create([
+        
+        'url' => 'annee.jpg'
      ]);
      return $updates; 
  });
