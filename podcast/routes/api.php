@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-
+use App\Http\Controllers\UserController;
 
 use App\Models\Post; 
 use App\Models\update; 
@@ -35,10 +35,20 @@ Route::get('/posts', function (){
     return $post; 
 });
 */
+
+Route::get('/podcast/{updates}', [UserController::class, 'show']);
+
+
+
+
 Route::get('updates', function (){
     $updates =  update::create([
         
-        'url' => 'annee.jpg'
+        'url' => 'atestingurl.jpg',
+        'title' => 'mymostepicmovie',
+        'description' => 'a movie about me :)',
+        'episode_number' => '69',
+        'created_date' => '2021-08-01 21:23:23'
      ]);
      return $updates; 
  });

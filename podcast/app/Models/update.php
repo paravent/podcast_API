@@ -9,8 +9,11 @@ class update extends Model
 {
 
     protected $fillable = [
-        'id',
-        'url'
+        'url',
+        'title',
+        'description',
+        'episode_number',
+        'created_date'
 
         
     ];
