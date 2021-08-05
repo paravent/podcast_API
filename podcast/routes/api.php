@@ -2,7 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+
+use App\Models\Post; 
+use App\Models\update; 
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,6 +22,29 @@ Route::get('testing', function (){
     return ['message' => 'hello']; 
 
 }); 
+
+Route::get('/posts', function (){
+   $post =  Post::create([
+       'id' => '1', 
+       'url' => 'anne.jpg',
+       'title' => 'walkingwithugly',
+       'description' => 'aPodcast',
+       'episode_number' => '1',
+       'date_created' => '21072001'
+    ]);
+    return $post; 
+});
+
+Route::get('/updates', function (){
+    $updates =  Post::create([
+        'url' => 'anne.jpg',
+        'title' => 'walkingwithugly',
+        'description' => 'aPodcast',
+        'episode_number' => '1',
+        'date_created' => '21072001'
+     ]);
+     return $updates; 
+ });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

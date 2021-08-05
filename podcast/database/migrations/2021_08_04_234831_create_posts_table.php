@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->integer('episode_number');
             $table->integer('date_created');
+            $table->timestamps(); 
         });
     }
 
