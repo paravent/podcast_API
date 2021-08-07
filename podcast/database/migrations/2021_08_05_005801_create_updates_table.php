@@ -15,6 +15,12 @@ class CreateUpdatesTable extends Migration
     {
         Schema::create('updates', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
+            $table->string('title');
+            $table->string('description');
+            $table->integer('episode_number');
+            $table->string('episode_name');
+            $table->integer('date_created');
             $table->timestamps();
         });
     }

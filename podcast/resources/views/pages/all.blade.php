@@ -17,6 +17,7 @@
 <td>title</td>
 <td>description</td>
 <td>episode number</td>
+<td>episode name</td>
 <td>created date</td>
 <td>updated at</td>
 <td>created at</td>
@@ -29,6 +30,7 @@
 <td>{{ $updates->title }}</td>
 <td>{{ $updates->description }}</td>
 <td>{{ $updates->episode_number }}</td>
+<td>{{ $updates->episode_name }}</td>
 <td>{{ $updates->created_date }}</td>
 <td>{{ $updates->updated_at }}</td>
 <td>{{ $updates->created_at }}</td>

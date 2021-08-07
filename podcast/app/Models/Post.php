@@ -9,15 +9,13 @@ class Post extends Model
 {
 
     protected $fillable = [
-        'id', 
         'url',
         'title',
         'description',
         'episode_number',
-        'date_created'
-
-        
-    ]; 
+        'episode_name',
+        'created_date'
+    ];
 
 
     use HasFactory;

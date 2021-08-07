@@ -16,14 +16,14 @@ class ExampleTest extends TestCase
      * @return void
      */
     
-    public function test_single_json_request()
-    { 
+    public function test_single_json_request(){ 
         
         
         $response = $this->postJson('/api/create/single', ['url' => 'iamhere.com', 
                                                     'title' => 'iainsucks',
                                                     'description' => 'nice',
                                                     'episode_number' => '9',
+                                                    "episode_name"=>"exampleepisodename",
                                                     'created_date' => '2021-08-05 14:12:32']);
         
         $response
@@ -50,7 +50,17 @@ class ExampleTest extends TestCase
             ]);
             */
     }
-    
 
-    //How to input json file into api?
+    public function test_delete_episode_request (){
+
+        $data = '9'; 
+        $this->withoutExceptionHandling();
+        
+        $response = $this->delete('/api/delete', ['episode_number' => '9']); 
+
+        $response
+            ->assertStatus(201);
+            
+    }
+    
 }

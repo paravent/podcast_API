@@ -13,6 +13,7 @@ class update extends Model
         'title',
         'description',
         'episode_number',
+        'episode_name',
         'created_date'
     ];
     use HasFactory;
