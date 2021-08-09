@@ -31,7 +31,7 @@
 <td>{{ $updates->description }}</td>
 <td>{{ $updates->episode_number }}</td>
 <td>{{ $updates->episode_name }}</td>
-<td>{{ $updates->created_date }}</td>
+<td>{{ $updates->date_created }}</td>
 <td>{{ $updates->updated_at }}</td>
 <td>{{ $updates->created_at }}</td>
 </tr>

@@ -5,11 +5,15 @@ namespace Tests\Feature;
 
 use DB; 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 
 class ExampleTest extends TestCase
 {
+
+
+    
     /**
      * A basic test example.
      *
@@ -18,24 +22,22 @@ class ExampleTest extends TestCase
     
     public function test_single_json_request(){ 
         
-        
+        $this->withoutExceptionHandling();
+
         $response = $this->postJson('/api/create/single', ['url' => 'iamhere.com', 
                                                     'title' => 'iainsucks',
                                                     'description' => 'nice',
                                                     'episode_number' => '9',
                                                     "episode_name"=>"exampleepisodename",
-                                                    'created_date' => '2021-08-05 14:12:32']);
+                                                   'date_created' => '2021-08-05 14:12:32']);
         
         $response
             ->assertStatus(201);
-            /*
-            ->assertJson([
-                'created' => true
-            ]);
-            */
     }
         
     public function test_json_from_file_request (){
+
+        $this->withoutExceptionHandling();
 
         $jsonString = file_get_contents(base_path('input.json'));
         $data = json_decode($jsonString, TRUE);
@@ -44,23 +46,33 @@ class ExampleTest extends TestCase
 
         $response
             ->assertStatus(201);
-            /*
-            ->assertJson([
-                'created' => true
-            ]);
-            */
     }
-
+    
     public function test_delete_episode_request (){
 
-        $data = '9'; 
+        $data = '12'; 
         $this->withoutExceptionHandling();
         
-        $response = $this->delete('/api/delete', ['episode_number' => '9']); 
+        $response = $this->post('/api/delete/something', ['episode_number' => $data]); 
 
         $response
-            ->assertStatus(201);
+        ->assertStatus(200);    
             
     }
+
+    /*
+    public function test_update_record (){
+
+        $this->withoutExceptionHandling();
+        $id = '3'; 
+        $description = 'test Worked!'
+
+        $response = $this->post('/api/update/something', ['id' => $id, 
+                                                         'description' => $description] );
+
+        $response
+            ->assertStatus(200);
+    }
+    */
     
 }
