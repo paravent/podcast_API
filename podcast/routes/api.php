@@ -21,12 +21,6 @@ use App\Models\Podcasts;
 */
 
 
-// Route::get('/podcasts', [PodcastController::class, 'show']);
-// Route::get('/culltime', [PodcastController::class, 'cull{9}']); 
-
-// Route::post('/delete'/$request['episode_to_delete'], [PodcastController::class, 'cull']);
-
-
 Route::post('/create/single', function (Request $request) {
     $updates =  Podcasts::create([
         'url' => $request['url'],

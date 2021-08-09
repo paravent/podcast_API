@@ -29,6 +29,7 @@ class PodcastController extends Controller
         $exist = DB::select('SELECT * FROM podcasts where episode_number = ?', [$deleteFactor]); 
     }
     
+    /*
     public function update(Request $request){
 
         $metaData = $request;
@@ -37,4 +38,5 @@ class PodcastController extends Controller
         
         $updateQuery = DB::update('UPDATE podcasts SET description = $description WHERE ID = $id'); 
     }
+    */
 }
